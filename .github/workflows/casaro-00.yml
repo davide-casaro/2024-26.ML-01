@@ -1,6 +1,7 @@
 name: Action di Casaro
 on:
   push:
+
 jobs:
   Ciao:
     runs-on: ubuntu-latest
@@ -14,8 +15,8 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-          sparse-checkout:
-            - casaro
+          sparse-checkout: casaro
+          sparse-checkout-cone-mode: false
 
       - uses: actions/setup-python@v5
         with:
@@ -25,6 +26,7 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+        working-directory: casaro
 
       - name: Run ML script
         run: python price_prediction.py
