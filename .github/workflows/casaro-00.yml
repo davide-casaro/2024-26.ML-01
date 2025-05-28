@@ -32,11 +32,10 @@ jobs:
         run: python price_prediction.py
         working-directory: casaro
 
-      - name: Upload script price_prediction.py
+      - name: Upload data folder and price_prediction.py
         uses: actions/upload-artifact@v4
         with:
-          name: script-price-prediction
-          path: casaro/price_prediction.py
-          if-no-files-found: error
-          retention-days: 7
-          overwrite: true
+          name: ml-artifacts
+          path: 
+            casaro/data
+            casaro/price_prediction.py
