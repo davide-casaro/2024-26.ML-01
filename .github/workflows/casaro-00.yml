@@ -5,4 +5,4 @@ jobs:
   Ciao:
     runs-on: ubuntu-latest
     steps:
-    - echo "Ciao Mondo!"
+      - run: echo "Ciao Mondo!"
