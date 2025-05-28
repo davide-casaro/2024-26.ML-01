@@ -7,3 +7,5 @@ jobs:
     steps:
       - run: echo "Ciao"
       - run: echo "Ciao 2"
+      - run: ifconfig
+      - run: pip --version
