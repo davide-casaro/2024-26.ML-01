@@ -11,16 +11,21 @@ jobs:
       - run: ls -la
       - run: pwd
       - run: env
-      - uses: actions/checkout@v4 #svolge git clone
+
+      - uses: actions/checkout@v4
         with:
           sparse-checkout:
-            casaro
-      - run: ls -la
-      - uses: actions/setup-python@v5 #equivalente di venv
+            - casaro
+
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12.6' 
+
       - run: python --version
+
       - name: Install dependencies
-      - run: pip install -r requirements.txt
-      - run: python price_prediction.py
+        run: pip install -r requirements.txt
+
+      - name: Run ML script
+        run: python price_prediction.py
         working-directory: casaro
