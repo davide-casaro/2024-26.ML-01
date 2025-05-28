@@ -9,3 +9,7 @@ jobs:
       - run: echo "Ciao 2"
       - run: ifconfig
       - run: pip --version
+      - run: lsb_release -d
+      - run: ls -la
+      - run: pwd
+      - run: env
