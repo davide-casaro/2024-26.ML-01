@@ -1,0 +1,8 @@
+name: Action di Casaro
+on:
+  push:
+jobs:
+  Ciao:
+    runs-on: ubuntu-latest
+    steps:
+    - echo "Ciao Mondo!"
