@@ -5,21 +5,20 @@ jobs:
   Ciao:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Ciao"
-      - run: echo "Ciao 2"
       - run: ifconfig
       - run: pip --version
       - run: lsb_release -d
       - run: ls -la
       - run: pwd
       - run: env
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4 #svolge git clone
         with:
           sparse-checkout:
             casaro
       - run: ls -la
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5 #equivalente di venv
         with:
           python-version: '3.12.6' 
       - run: python --version
-  
+      - run: python price_prediction.py
+        working-directory: casaro
