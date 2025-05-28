@@ -20,5 +20,7 @@ jobs:
         with:
           python-version: '3.12.6' 
       - run: python --version
+      - name: Install dependencies
+      - run: pip install -r requirements.txt
       - run: python price_prediction.py
         working-directory: casaro

@@ -1,12 +1,11 @@
 import pandas as pd
-from random import randint
 import sklearn
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import make_scorer, mean_absolute_error, mean_absolute_percentage_error
-from sklearn.model_selection import train_test_split, KFold, RandomizedSearchCV
+from sklearn.model_selection import train_test_split, KFold
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler, OneHotEncoder, TargetEncoder, OrdinalEncoder
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
 
 sklearn.set_config(transform_output='pandas')
