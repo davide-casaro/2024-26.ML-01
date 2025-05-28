@@ -13,3 +13,9 @@ jobs:
       - run: ls -la
       - run: pwd
       - run: env
+      - use: actions/checkout@v4
+        with:
+          sparse-checkout:
+            casaro
+      - run: ls -la
+  
