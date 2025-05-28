@@ -107,10 +107,9 @@ mae = mean_absolute_error(y_test, grid_seach.predict(x_test))
 mape = mean_absolute_percentage_error(y_test, grid_seach.predict(x_test))
 
 print(mae)
-print(f"errore medio assoluto: {(mae*100).round(1)}%")
-
+print(f"errore medio assoluto: {round(mae*100, 1)}%")
 print(mape)
-print(f"errore medio percentuale assoluto: {(mape*100).round(1)}%")
+print(f"errore medio percentuale assoluto: {round(mape*100, 1)}%")
 
 
 df_prediction = pd.read_csv('data/predict.csv')
