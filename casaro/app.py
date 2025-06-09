@@ -12,7 +12,7 @@ feature_cols=['release_date', 'publisher', 'median_playtime', 'price', 'Genre: A
 @app.route('/infer', methods=['POST'])
 def hello():
     data = request.get_json()
-    param1 = data.get("param1", "")
+    param1 = data.get()
     
     mymodel = joblib.load("mymodel.joblib")
     infer_result = mymodel.predict(param1)
