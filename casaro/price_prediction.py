@@ -6,6 +6,7 @@ from sklearn.metrics import make_scorer, mean_absolute_error, mean_absolute_perc
 from sklearn.model_selection import train_test_split, KFold
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
+import joblib
 
 
 sklearn.set_config(transform_output='pandas')
@@ -119,3 +120,6 @@ y_prediction = grid_seach.predict(x_prediction)
 df_prediction['pos_perc'] = (df_prediction['pos_perc'].astype(float) * 100).round(2)
 df_prediction['predicted_pos_perc'] = (y_prediction*100).round(2)
 print(df_prediction[['name', 'predicted_pos_perc', 'pos_perc']])
+
+
+joblib.dump(grid_seach, 'mymodel.joblib')

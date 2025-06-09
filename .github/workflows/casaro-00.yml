@@ -36,6 +36,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ml-artifacts
-          path: 
-            casaro/data
-            casaro/price_prediction.py
+          path: casaro/mymodel.joblib
