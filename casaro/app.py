@@ -4,18 +4,26 @@ import joblib
 
 app = Flask(__name__)
 
-feature_cols=['release_date', 'publisher', 'median_playtime', 'price', 'Genre: Action', 
-              'Genre: Adventure', 'Genre: Casual', 'Genre: Early Access', 
-              'Genre: Free to Play', 'Genre: Indie', 'Genre: Massively Multiplayer', 
-              'Genre: RPG', 'Genre: Racing', 'Genre: Simulation', 'Genre: Sports', 'Genre: Strategy']
+feature_cols = ['release_date', 'publisher', 'median_playtime', 'price', 'Genre: Action', 
+                'Genre: Adventure', 'Genre: Casual', 'Genre: Early Access', 
+                'Genre: Free to Play', 'Genre: Indie', 'Genre: Massively Multiplayer', 
+                'Genre: RPG', 'Genre: Racing', 'Genre: Simulation', 'Genre: Sports', 'Genre: Strategy']
+
+mymodel = joblib.load("mymodel.joblib")
 
 @app.route('/infer', methods=['POST'])
-def hello():
+def infer():
     data = request.get_json()
-    param1 = data.get()
-    
-    mymodel = joblib.load("mymodel.joblib")
-    infer_result = mymodel.predict(param1)
+
+    if not data:
+        return jsonify({"error": "No input data provided"}), 400
+
+    try:
+        input_df = pd.DataFrame([data])[feature_cols]
+    except KeyError as e:
+        return jsonify({"error": f"Missing or incorrect features: {e}"}), 400
+
+    infer_result = mymodel.predict(input_df)[0]
 
     response_data = {
         "result": {
